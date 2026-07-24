@@ -1,0 +1,13 @@
+{"name":"Maya Ortiz",
+"title":"Software Engineer",
+"tagline":"I build systems that stay reliable under pressure.",
+"heroBadge":"Backend & Distributed Systems",
+"heroDescription":"I design dependable platforms, clear APIs, and observability that makes failures easier to understand and recover from.",
+"aboutTitle":"A clear structure for the story and experience.",
+"aboutDescription":"Over the last six years, I have built backend systems for fintech, developer tooling, and high-throughput products where correctness matters more than flash.",
+"navigation":[{"label":"About","href":"#about"},
+{"label":"Skills","href":"#skills"},{"label":"Projects","href":"#projects"},
+{"label":"Achievements","href":"#achievements"},{"label":"Contact","href":"#contact"}],
+"highlights":[{"label":"Years building","value":"6+"},{"label":"Systems owned","value":"40+"},
+{"label":"Teams supported","value":"12"}],"contact":{"email":"maya.ortiz.dev@example.com",
+"availability":"Available for select roles"}}
