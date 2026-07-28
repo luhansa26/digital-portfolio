@@ -1,21 +1,26 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import "./globals.css";
+import { portfolio } from "../lib/content";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const jetBrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
+  subsets: ["latin"],
+});
+
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "Maya Ortiz | Software Engineer",
-  description:
-    "A modern portfolio website showcasing backend engineering, distributed systems, and product-minded software delivery.",
+  title: `${portfolio.name} | ${portfolio.title}`,
+  description: portfolio.tagline,
 };
 
 export default function RootLayout({
@@ -26,7 +31,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${jetBrainsMono.variable} ${spaceGrotesk.variable} h-full antialiased`}
     >
       <body className="min-h-full">{children}</body>
     </html>
