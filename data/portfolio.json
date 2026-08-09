@@ -1,27 +1,51 @@
 {
-    "name": "Maya Ortiz",
-    "title": "Software Engineer",
-    "tagline": "Maya Ortiz builds systems that stay up at 3am.",
-    "heroBadge": "Backend & Distributed Systems Engineer",
-    "heroDescription": "Six years designing and operating backend platforms — from payment infrastructure serving millions of requests a day to internal tools that make other engineers faster. I care about correctness, clear interfaces, and systems that fail loudly instead of quietly.",
-    "aboutTitle": "About me",
-    "aboutDescription": "I'm a software engineer who started out fixing bugs in a university robotics lab and ended up falling in love with the unglamorous parts of engineering: queues, retries, migrations, the stuff that has to work even when nobody's watching.",
-    "pullQuote": "Good infrastructure is invisible when it works and instantly diagnosable when it doesn't.",
+  "name": "Luhansa Sooriyabandara",
+  "title": "Computer Science Undergraduate",
+  "tagline": "Luhansa builds practical software and explores the systems behind it.",
+  "heroBadge": "Software Engineering & DevOps Enthusiast",
+  "heroDescription": "Computer Science undergraduate at SLIIT with hands-on experience building full-stack applications, backend systems, and computer vision projects. I'm currently exploring DevOps and platform engineering, with a focus on cloud infrastructure, containerization, automation, and building reliable software.",
+  "aboutTitle": "About me",
+  "pullQuote": "I enjoy turning ideas into working systems and learning what makes them reliable.",
   "navigation": [
-    { "label": "About", "href": "#about" },
-    { "label": "Skills", "href": "#skills" },
-    { "label": "Projects", "href": "#projects" },
-    { "label": "Achievements", "href": "#achievements" },
-    { "label": "Certifications", "href": "#certifications" },
-    { "label": "Contact", "href": "#contact" }
-  ],
-    "highlights": [
-        { "label": "Years shipping", "value": "6+" },
-        { "label": "Services owned", "value": "40+" },
-        { "label": "Engineers mentored", "value": "12" }
-    ],
-    "contact": {
-        "email": "maya.ortiz.dev@example.com",
-        "availability": "Open to select roles"
+    {
+      "label": "About",
+      "href": "#about"
+    },
+    {
+      "label": "Skills",
+      "href": "#skills"
+    },
+    {
+      "label": "Projects",
+      "href": "#projects"
+    },
+    {
+      "label": "Achievements",
+      "href": "#achievements"
+    },
+    {
+      "label": "Certifications",
+      "href": "#certifications"
+    },
+    {
+      "label": "Contact",
+      "href": "#contact"
     }
+  ],
+  "highlights": [
+    
+  ],
+  "contact": {
+    "email": "your.email@example.com",
+    "availability": "Open to internship opportunities"
+  },
+  "role": "Computer Science Undergraduate",
+  "based_in": "Sri Lanka",
+  "experience": "Student Developer",
+  "currently_shipping": "React, Spring Boot, Docker, AWS",
+  "profileImage": "/images/luhansa_profile.jpeg",
+  "aboutParagraphs": [
+    "I'm a Computer Science undergraduate at SLIIT with a strong interest in software engineering, backend development, and DevOps. I've worked on projects using technologies such as React, Spring Boot, Java, TypeScript, MySQL, PostgreSQL, Docker, AWS, and GitLab CI/CD. I enjoy understanding how different parts of a system fit together and turning concepts into practical, working applications.",
+    "I'm currently expanding my skills in cloud infrastructure, containerization, CI/CD, Linux, and platform engineering. Outside academics, I enjoy working on personal projects, participating in technical communities, and continuously learning through hands-on projects."
+  ]
 }

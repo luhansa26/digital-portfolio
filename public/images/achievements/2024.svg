@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" fill="none">
+  <defs>
+    <linearGradient id="g" x1="0" x2="320" y1="0" y2="180">
+      <stop offset="0%" stop-color="#5EEAD4" />
+      <stop offset="100%" stop-color="#08101f" />
+    </linearGradient>
+  </defs>
+  <rect width="320" height="180" rx="24" fill="url(#g)" />
+  <path d="M72 120h176M72 100h176" stroke="#fff" stroke-width="12" stroke-linecap="round" />
+  <circle cx="88" cy="60" r="14" fill="#fff" />
+  <circle cx="136" cy="60" r="14" fill="#fff" />
+  <circle cx="184" cy="60" r="14" fill="#fff" />
+  <text x="36" y="160" fill="#fff" font-family="Segoe UI" font-size="24" font-weight="700">Talk</text>
+  <text x="36" y="180" fill="#fff" font-family="Segoe UI" font-size="14">2024</text>
+</svg>

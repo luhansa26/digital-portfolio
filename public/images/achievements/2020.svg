@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" fill="none">
+  <defs>
+    <linearGradient id="g" x1="0" x2="320" y1="0" y2="180">
+      <stop offset="0%" stop-color="#5EEAD4" />
+      <stop offset="100%" stop-color="#11203a" />
+    </linearGradient>
+  </defs>
+  <rect width="320" height="180" rx="24" fill="url(#g)" />
+  <path d="M80 108c20-18 44-28 64-34 15-4 28-6 40-6" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" />
+  <circle cx="96" cy="68" r="12" fill="#fff" />
+  <circle cx="148" cy="56" r="12" fill="#fff" />
+  <text x="38" y="160" fill="#fff" font-family="Segoe UI" font-size="24" font-weight="700">Found</text>
+  <text x="38" y="180" fill="#fff" font-family="Segoe UI" font-size="14">2020</text>
+</svg>

@@ -1,36 +1,95 @@
 [
-    {
-        "id": "project-1",
-        "title": "Ledger",
-        "summary": "Real-time payments engine built for reliable settlement across distributed systems.",
-        "tags": [
-            "Go",
-            "Kafka",
-            "Postgres",
-            "gRPC"
-        ],
-        "metric": "4M+ transactions/day"
-    },
-    {
-        "id": "project-2",
-        "title": "Waypoint",
-        "summary": "Internal deployment platform that cut release time for engineering teams dramatically.",
-        "tags": [
-            "TypeScript",
-            "Kubernetes",
-            "Terraform"
-        ],
-        "metric": "40min to 6min deploys"
-    },
-    {
-        "id": "project-3",
-        "title": "Sift",
-        "summary": "Open-source CLI for spotting unusual patterns in structured logs without a heavy ML stack.",
-        "tags": [
-            "Rust",
-            "CLI",
-            "Open Source"
-        ],
-        "metric": "1,800+ GitHub stars"
-    }
+  {
+    "id": "project-1",
+    "title": "DriveSense",
+    "summary": "A road sign detection system built with an ESP32-CAM and computer vision, designed to detect and recognize road signs at the edge.",
+    "tags": [
+      "C++",
+      "ESP32-CAM",
+      "TensorFlow Lite",
+      "Edge Impulse",
+      "Computer Vision"
+    ],
+    "metric": "1st Place at SciFest 2025",
+    "featured": true,
+    "repo": "YOUR_GITHUB_REPO_URL"
+  },
+  {
+    "id": "project-2",
+    "title": "Kalyani Jewellery",
+    "summary": "A full-stack e-commerce website developed for a jewellery business, with a React frontend and Spring Boot backend for managing products and application logic.",
+    "tags": [
+      "React",
+      "Spring Boot",
+      "Java",
+      "MySQL",
+      "REST API"
+    ],
+    "metric": "Full-stack application",
+    "featured": true,
+    "repo": "YOUR_GITHUB_REPO_URL",
+    "live": "YOUR_LIVE_URL"
+  },
+  {
+    "id": "project-3",
+    "title": "RMIS Portal",
+    "summary": "A full-stack management portal built with a Spring Boot backend and modern Next.js frontend, using PostgreSQL for persistent data management.",
+    "tags": [
+      "Java",
+      "Spring Boot",
+      "Next.js",
+      "TypeScript",
+      "PostgreSQL"
+    ],
+    "metric": "Full-stack management system",
+    "featured": true,
+    "repo": "YOUR_GITHUB_REPO_URL",
+    "live": "YOUR_LIVE_URL"
+  },
+  {
+    "id": "project-4",
+    "title": "SkillBridge",
+    "summary": "A platform that provides skill gap analysis and personalized learning paths for undergraduates to enhance their employability.",
+    "tags": [
+      "React",
+      "Spring Boot",
+      "Java",
+      "MySQL",
+      "REST API"
+    ],
+    "metric": "1st Place at CryptX 2.0 Designathon",
+    "featured": true,
+    "repo": "YOUR_GITHUB_REPO_URL",
+    "live": "YOUR_LIVE_URL"
+  },
+  {
+    "id": "project-5",
+    "title": "Containerized Web App on AWS",
+    "summary": "A DevOps project focused on deploying a containerized web application on AWS using infrastructure as code and an automated CI/CD pipeline.",
+    "tags": [
+      "AWS",
+      "Docker",
+      "Terraform",
+      "GitLab CI/CD",
+      "Linux"
+    ],
+    "metric": "Automated infrastructure and deployment pipeline",
+    "featured": true,
+    "repo": "YOUR_GITHUB_REPO_URL"
+  },
+  {
+    "id": "project-6",
+    "title": "Smart Personal Productivity Dashboard",
+    "summary": "A personal productivity platform designed to organize tasks, track progress, and provide a centralized view of daily activities.",
+    "tags": [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Firebase"
+    ],
+    "metric": "Personal productivity platform",
+    "featured": false,
+    "repo": "YOUR_GITHUB_REPO_URL",
+    "live": "YOUR_LIVE_URL"
+  }
 ]

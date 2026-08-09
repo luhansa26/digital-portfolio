@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" fill="none">
+  <defs>
+    <linearGradient id="g" x1="0" x2="320" y1="0" y2="180">
+      <stop offset="0%" stop-color="#5EEAD4" />
+      <stop offset="100%" stop-color="#10223b" />
+    </linearGradient>
+  </defs>
+  <rect width="320" height="180" rx="24" fill="url(#g)" />
+  <path d="M64 108h40l12-24 16 48 16-32 20 16" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="70" cy="125" r="6" fill="#fff" />
+  <circle cx="170" cy="84" r="6" fill="#fff" />
+  <text x="38" y="160" fill="#fff" font-family="Segoe UI" font-size="24" font-weight="700">DB</text>
+  <text x="38" y="180" fill="#fff" font-family="Segoe UI" font-size="14">Migration</text>
+</svg>

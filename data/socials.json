@@ -1,14 +1,4 @@
 [
-    {
-        "label": "GitHub",
-        "href": "https://github.com/luhansa26"
-    },
-    {
-        "label": "LinkedIn",
-        "href": "https://linkedin.com/in/luhansa-soori"
-    },
-    {
-        "label": "Email",
-        "href": "hi@luhansasooriyabandara.com"
-    }
+  { "label": "GitHub", "href": "https://github.com/luhansa26" },
+  { "label": "LinkedIn", "href": "https://linkedin.com/in/luhansa-soori" }
 ]

@@ -1,12 +1,14 @@
+"use client";
+
+import { useState } from "react";
 import { achievements, certificates, portfolio, projects, skills, socials } from "../lib/content";
 
 type NavigationItem = { label: string; href: string };
-type HighlightItem = { label: string; value: string };
 type SkillGroup = { category: string; items: Array<{ name: string; level: number }> };
-type ProjectItem = { id: string; title: string; summary: string; tags: string[]; metric: string };
+type ProjectItem = { id: string; title: string; summary: string; tags: string[]; metric: string; featured?: boolean; repo?: string; live?: string; linkedin?: string };
 type SocialItem = { label: string; href: string };
-type AchievementItem = { year: string; title: string; description: string };
-type CertificateItem = { name: string; issuer: string; year: string; id: string };
+type AchievementItem = { year: string; title: string; description: string; image?: string };
+type CertificateItem = { name: string; issuer: string; year: string; id: string; image?: string; link?: string };
 
 type SectionHeaderProps = {
   eyebrow: string;
@@ -27,29 +29,32 @@ function SectionHeader({ eyebrow, title, copy }: SectionHeaderProps) {
 export default function Home() {
   const {
     navigation,
-    highlights,
     heroDescription,
     heroBadge,
     aboutTitle,
-    aboutDescription,
     title,
     tagline,
     contact,
   } = portfolio as {
     navigation: NavigationItem[];
-    highlights: HighlightItem[];
     heroDescription: string;
     heroBadge: string;
     aboutTitle: string;
-    aboutDescription: string;
     title: string;
     tagline: string;
     contact: { email: string; availability: string };
   };
   const skillGroups = skills as SkillGroup[];
   const projectItems = projects as ProjectItem[];
+  const featuredProjects = projectItems.filter((p) => (p as any).featured);
+  const otherProjects = projectItems.filter((p) => !(p as any).featured);
   const socialItems = socials as SocialItem[];
+  const [showAllProjects, setShowAllProjects] = useState(false);
+  const [showAllAchievements, setShowAllAchievements] = useState(false);
+  const [navOpen, setNavOpen] = useState(false);
   const achievementItems = achievements as AchievementItem[];
+  const featuredAchievements = achievementItems.slice(0, 3);
+  const otherAchievements = achievementItems.slice(3);
   const certificateItems = certificates as CertificateItem[];
 
   return (
@@ -61,12 +66,27 @@ export default function Home() {
             <span>{portfolio.name}</span>
           </a>
 
-          <nav className="site-nav-links" aria-label="Primary navigation">
+          <button
+            type="button"
+            className="nav-toggle"
+            aria-expanded={navOpen}
+            aria-label={navOpen ? "Close navigation" : "Open navigation"}
+            onClick={() => setNavOpen((prev) => !prev)}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+
+          <nav className={`site-nav-links ${navOpen ? "open" : ""}`} aria-label="Primary navigation">
             {navigation.map((item) => (
-              <a key={item.href} href={item.href}>
+              <a key={item.href} href={item.href} onClick={() => setNavOpen(false)}>
                 {item.label}
               </a>
             ))}
+            <a href="#contact" className="button button--secondary nav-cta" onClick={() => setNavOpen(false)}>
+              Get in touch
+            </a>
           </nav>
         </div>
       </header>
@@ -90,22 +110,19 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="card hero-card" aria-label="Portfolio overview card">
-              <p className="eyebrow">Current focus</p>
-              <h2 className="section-title">{title}</h2>
-              <p className="section-copy" style={{ marginTop: "0.85rem" }}>
-                The portfolio content is now sourced from JSON data files for easier maintenance.
-              </p>
+            <div className="status-panel bracket" aria-label="Portfolio overview card">
+              <div className="status-head">
+                <span>status.log</span>
+                <span className="lights"><i></i><i></i></span>
+              </div>
 
-              <div className="hero-meta">
-                <div>
-                  <span className="meta-label">Availability</span>
-                  <strong>{contact.availability}</strong>
-                </div>
-                <div>
-                  <span className="meta-label">Email</span>
-                  <strong>{contact.email}</strong>
-                </div>
+              <div className="status-row"><span className="k">role</span><span className="v">{(portfolio as any).role}</span></div>
+              <div className="status-row"><span className="k">based_in</span><span className="v">{(portfolio as any).based_in}</span></div>
+              <div className="status-row"><span className="k">experience</span><span className="v">{(portfolio as any).experience}</span></div>
+
+              <div className="stack-ticker">
+                <span>currently_shipping: {(portfolio as any).currently_shipping}</span>
+                <span className="cursor" aria-hidden="true" />
               </div>
             </div>
           </div>
@@ -113,16 +130,32 @@ export default function Home() {
 
         <section id="about" className="section">
           <div className="section-wrapper">
-            <SectionHeader eyebrow="About" title={aboutTitle} copy={aboutDescription} />
+            <SectionHeader eyebrow="About" title={aboutTitle} />
 
-            {/* <div className="card-grid" style={{ marginTop: "1.5rem" }}>
-              {highlights.map((item) => (
-                <div key={item.label} className="stat-card">
-                  <strong>{item.value}</strong>
-                  <span>{item.label}</span>
-                </div>
-              ))}
-            </div> */}
+            <div className="about-grid" style={{ marginTop: "1.5rem" }}>
+              <div className="about-photo bracket">
+                {(portfolio as any).profileImage ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={(portfolio as any).profileImage} alt={`${portfolio.name} profile`} />
+                ) : (
+                  <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="36" r="18" stroke="#5EEAD4" strokeWidth="1.5" />
+                    <path d="M18 88C18 68 32 58 50 58C68 58 82 68 82 88" stroke="#5EEAD4" strokeWidth="1.5" />
+                    <circle cx="50" cy="50" r="46" stroke="#1E2A42" strokeWidth="1" />
+                  </svg>
+                )}
+              </div>
+
+              <div className="about-text">
+                {(portfolio as any).pullQuote ? (
+                  <div className="pull">{(portfolio as any).pullQuote}</div>
+                ) : null}
+
+                {((portfolio as any).aboutParagraphs || []).map((p: string, i: number) => (
+                  <p key={i} className="section-copy" style={{ marginTop: i === 0 ? 0 : "0.9rem" }}>{p}</p>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
 
@@ -137,7 +170,14 @@ export default function Home() {
                   </h3>
                   <ul className="section-list">
                     {group.items.map((item) => (
-                      <li key={item.name}>{item.name}</li>
+                      <li key={item.name} style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                        <span>{item.name}</span>
+                        <div className="meter" aria-hidden>
+                          {Array.from({ length: 5 }).map((_, i) => (
+                            <i key={i} className={i < item.level ? "on" : ""} />
+                          ))}
+                        </div>
+                      </li>
                     ))}
                   </ul>
                 </div>
@@ -149,49 +189,143 @@ export default function Home() {
         <section id="projects" className="section">
           <div className="section-wrapper">
             <SectionHeader eyebrow="Projects" title="Selected builds and product work" />
-            <div className="card-grid" style={{ marginTop: "1.5rem" }}>
-              {projectItems.map((project) => (
-                <div key={project.id} className="card project-card">
-                  <h3 className="section-title" style={{ fontSize: "1.2rem" }}>
-                    {project.title}
-                  </h3>
-                  <p className="section-copy" style={{ marginTop: "0.7rem" }}>
-                    {project.summary}
-                  </p>
-                  <div className="pill-list">
-                    {project.tags.map((tag) => (
-                      <span key={tag} className="pill">
-                        {tag}
-                      </span>
-                    ))}
+            {/* Featured projects (up to 3) */}
+            {featuredProjects && featuredProjects.length > 0 ? (
+              <div className="card-grid featured-grid" style={{ marginTop: "1.5rem" }}>
+                {featuredProjects.map((project, idx) => (
+                  <div key={project.id} className="card project-card bracket">
+                    <div className="project-top">
+                      <span className="idx mono">{`PRJ-${String(idx + 1).padStart(2, "0")}`}</span>
+                      <div className="project-links">
+                        {project.repo ? <a href={project.repo} target="_blank" rel="noopener noreferrer">Code</a> : <a href="#">Code</a>}
+                        {project.live ? <a href={project.live} target="_blank" rel="noopener noreferrer">Live</a> : null}
+                      </div>
+                    </div>
+
+                    <h3 className="section-title" style={{ fontSize: "1.2rem" }}>{project.title}</h3>
+                    <p className="section-copy" style={{ marginTop: "0.7rem" }}>{project.summary}</p>
+
+                    <div className="tag-row" style={{ marginTop: "0.9rem" }}>
+                      {project.tags.map((tag) => (
+                        <span key={tag} className="tag">{tag}</span>
+                      ))}
+                    </div>
+
+                    <div className="project-actions">
+                      <div className="project-metric mono">→ {project.metric}</div>
+                      { (project.repo || project.linkedin || project.live) ? (
+                        <div className="project-button-wrap">
+                          <a className="button button--secondary" href={project.repo || project.live || project.linkedin} target="_blank" rel="noopener noreferrer">View details</a>
+                        </div>
+                      ) : null }
+                    </div>
                   </div>
-                  <p className="section-copy" style={{ marginTop: "0.7rem", color: "var(--color-accent)" }}>
-                    {project.metric}
-                  </p>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            ) : null}
+
+            {/* All other projects */}
+            {otherProjects && otherProjects.length > 0 ? (
+              <div style={{ marginTop: '2rem' }}>
+                <button
+                  type="button"
+                  className="button button--secondary"
+                  onClick={() => setShowAllProjects((prev) => !prev)}
+                  style={{ marginBottom: '1rem' }}
+                >
+                  {showAllProjects ? 'Hide all projects' : 'Show all projects'}
+                </button>
+                {showAllProjects ? (
+                  <div>
+                    <h3 style={{ marginBottom: '1rem' }} className="section-title">All projects</h3>
+                    <div className="card-grid projects-grid">
+                      {otherProjects.map((project, idx) => (
+                        <div key={project.id} className="card project-card bracket">
+                          <div className="project-top">
+                            <span className="idx mono">{`PRJ-${String(idx + 1 + featuredProjects.length).padStart(2, "0")}`}</span>
+                            <div className="project-links">
+                              {project.repo ? <a href={project.repo} target="_blank" rel="noopener noreferrer">Code</a> : <a href="#">Code</a>}
+                              {project.live ? <a href={project.live} target="_blank" rel="noopener noreferrer">Live</a> : null}
+                            </div>
+                          </div>
+
+                          <h3 className="section-title" style={{ fontSize: "1.2rem" }}>{project.title}</h3>
+                          <p className="section-copy" style={{ marginTop: "0.7rem" }}>{project.summary}</p>
+
+                          <div className="tag-row" style={{ marginTop: "0.9rem" }}>
+                            {project.tags.map((tag) => (
+                              <span key={tag} className="tag">{tag}</span>
+                            ))}
+                          </div>
+
+                          <div className="project-actions">
+                            <div className="project-metric mono">→ {project.metric}</div>
+                            { (project.repo || project.linkedin || project.live) ? (
+                              <div className="project-button-wrap">
+                                <a className="button button--secondary" href={project.repo || project.live || project.linkedin} target="_blank" rel="noopener noreferrer">View details</a>
+                              </div>
+                            ) : null }
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
+              </div>
+            ) : null}
           </div>
         </section>
 
         <section id="achievements" className="section">
           <div className="section-wrapper">
-            <SectionHeader eyebrow="Achievements" title="A timeline of focused growth" />
-            <div className="timeline-list" style={{ marginTop: "1.5rem" }}>
-              {achievementItems.map((achievement) => (
-                <div key={achievement.title} className="card timeline-card">
-                  <p className="eyebrow" style={{ marginBottom: "0.5rem" }}>
-                    {achievement.year}
-                  </p>
-                  <h3 className="section-title" style={{ fontSize: "1.1rem" }}>
-                    {achievement.title}
-                  </h3>
-                  <p className="section-copy" style={{ marginTop: "0.7rem" }}>
-                    {achievement.description}
-                  </p>
+            <SectionHeader eyebrow="Achievements" title="A view of focused growth" />
+            <div className="card-grid achievements-grid" style={{ marginTop: "1.5rem" }}>
+              {featuredAchievements.map((achievement) => (
+                <div key={achievement.title} className="card achievement-card bracket">
+                  {achievement.image ? (
+                    <img className="achievement-image" src={achievement.image} alt={achievement.title} />
+                  ) : (
+                    <div className="achievement-media fallback">
+                      <span>{achievement.year}</span>
+                    </div>
+                  )}
+                  <span className="achievement-year mono">{achievement.year}</span>
+                  <h3 className="project-metric mono" style={{ fontSize: "1.1rem", marginTop: "0.8rem" }}>{achievement.title}</h3>
+                  <p className="section-copy" style={{ marginTop: "0.85rem" }}>{achievement.description}</p>
                 </div>
               ))}
             </div>
+
+            {otherAchievements.length > 0 ? (
+              <div style={{ marginTop: '2rem' }}>
+                <button
+                  type="button"
+                  className="button button--secondary"
+                  onClick={() => setShowAllAchievements((prev) => !prev)}
+                  style={{ marginBottom: '1rem' }}
+                >
+                  {showAllAchievements ? 'Hide all achievements' : 'View all achievements'}
+                </button>
+                {showAllAchievements ? (
+                  <div className="card-grid achievements-grid" style={{ marginTop: "1rem" }}>
+                    {otherAchievements.map((achievement) => (
+                      <div key={achievement.title} className="card achievement-card bracket">
+                        {achievement.image ? (
+                          <img className="achievement-image" src={achievement.image} alt={achievement.title} />
+                        ) : (
+                          <div className="achievement-media fallback">
+                            <span>{achievement.year}</span>
+                          </div>
+                        )}
+                        <span className="achievement-year mono">{achievement.year}</span>
+                        <h3 className="section-title" style={{ fontSize: "1.1rem", marginTop: "0.8rem" }}>{achievement.title}</h3>
+                        <p className="section-copy" style={{ marginTop: "0.85rem" }}>{achievement.description}</p>
+                      </div>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
+            ) : null}
           </div>
         </section>
 
@@ -200,16 +334,21 @@ export default function Home() {
             <SectionHeader eyebrow="Certifications" title="Credentials that support the work" />
             <div className="card-grid" style={{ marginTop: "1.5rem" }}>
               {certificateItems.map((certificate) => (
-                <div key={certificate.id} className="card">
-                  <h3 className="section-title" style={{ fontSize: "1.1rem" }}>
-                    {certificate.name}
-                  </h3>
-                  <p className="section-copy" style={{ marginTop: "0.7rem" }}>
-                    {certificate.issuer}
-                  </p>
-                  <p className="section-copy" style={{ marginTop: "0.7rem", color: "var(--color-accent)" }}>
-                    {certificate.year} · {certificate.id}
-                  </p>
+                <div key={certificate.id} className="cert-card">
+                  {certificate.image ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img className="cert-image" src={certificate.image} alt={certificate.name} />
+                  ) : (
+                    <div className="cert-icon mono">{certificate.issuer.split(' ')[0]}</div>
+                  )}
+                  <h3 className="section-title" style={{ fontSize: "1.1rem" }}>{certificate.name}</h3>
+                  <p className="section-copy" style={{ marginTop: "0.7rem" }}>{certificate.issuer}</p>
+                  <div className="cert-meta"><span>{certificate.year}</span><span>ID: {certificate.id}</span></div>
+                  {certificate.link ? (
+                    <a href={certificate.link} target="_blank" rel="noopener noreferrer" className="button button--secondary cert-cta">
+                      View certificate
+                    </a>
+                  ) : null}
                 </div>
               ))}
             </div>
@@ -233,38 +372,60 @@ export default function Home() {
 
       <footer className="site-footer">
         <div className="section-wrapper site-footer__inner">
-          <div>
+          <div className="footer-col footer-col--brand">
             <a href="#top" className="site-brand">
               <span className="site-brand__dot" aria-hidden="true" />
               <span>{portfolio.name}</span>
             </a>
-            <p className="section-copy" style={{ marginTop: "0.75rem" }}>
-              {tagline}
-            </p>
+            <p className="section-copy footer-copy">{tagline}</p>
           </div>
 
-          <div className="footer-links">
-            <div>
-              <h3 className="footer-title">Navigate</h3>
-              <ul className="footer-list">
-                {navigation.map((item) => (
-                  <li key={item.href}>
-                    <a href={item.href}>{item.label}</a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="footer-title">Connect</h3>
-              <ul className="footer-list">
-                {socialItems.map((social) => (
-                  <li key={social.label}>
-                    <a href={social.href}>{social.label}</a>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <div className="footer-col">
+            <h3 className="footer-title">Navigate</h3>
+            <ul className="footer-list">
+              {navigation.map((item) => (
+                <li key={item.href}>
+                  <a href={item.href}>{item.label}</a>
+                </li>
+              ))}
+            </ul>
           </div>
+
+          <div className="footer-col">
+            <h3 className="footer-title">Elsewhere</h3>
+            <ul className="footer-list">
+              {socialItems.map((social) => (
+                <li key={social.label}>
+                  <a href={social.href} target="_blank" rel="noopener noreferrer">
+                    {social.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="footer-col">
+            <h3 className="footer-title">Contact</h3>
+            <ul className="footer-list">
+              <li>
+                <a href={`mailto:${contact.email}`}>Email</a>
+              </li>
+              <li>
+                <a href="#contact">Get in touch</a>
+              </li>
+              <li>
+                <a href="#contact">Download résumé</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="section-wrapper footer-bottom">
+          <span>© {new Date().getFullYear()} {portfolio.name}. Built from scratch, no template.</span>
+          <span className="footer-status">
+            <span className="status-dot" aria-hidden="true" />
+            system status: {contact.availability.toLowerCase()}
+          </span>
         </div>
       </footer>
     </main>
