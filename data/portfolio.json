@@ -1,13 +1,27 @@
-{"name":"Maya Ortiz",
-"title":"Software Engineer",
-"tagline":"I build systems that stay reliable under pressure.",
-"heroBadge":"Backend & Distributed Systems",
-"heroDescription":"I design dependable platforms, clear APIs, and observability that makes failures easier to understand and recover from.",
-"aboutTitle":"A clear structure for the story and experience.",
-"aboutDescription":"Over the last six years, I have built backend systems for fintech, developer tooling, and high-throughput products where correctness matters more than flash.",
-"navigation":[{"label":"About","href":"#about"},
-{"label":"Skills","href":"#skills"},{"label":"Projects","href":"#projects"},
-{"label":"Achievements","href":"#achievements"},{"label":"Contact","href":"#contact"}],
-"highlights":[{"label":"Years building","value":"6+"},{"label":"Systems owned","value":"40+"},
-{"label":"Teams supported","value":"12"}],"contact":{"email":"maya.ortiz.dev@example.com",
-"availability":"Available for select roles"}}
+{
+    "name": "Maya Ortiz",
+    "title": "Software Engineer",
+    "tagline": "Maya Ortiz builds systems that stay up at 3am.",
+    "heroBadge": "Backend & Distributed Systems Engineer",
+    "heroDescription": "Six years designing and operating backend platforms — from payment infrastructure serving millions of requests a day to internal tools that make other engineers faster. I care about correctness, clear interfaces, and systems that fail loudly instead of quietly.",
+    "aboutTitle": "About me",
+    "aboutDescription": "I'm a software engineer who started out fixing bugs in a university robotics lab and ended up falling in love with the unglamorous parts of engineering: queues, retries, migrations, the stuff that has to work even when nobody's watching.",
+    "pullQuote": "Good infrastructure is invisible when it works and instantly diagnosable when it doesn't.",
+  "navigation": [
+    { "label": "About", "href": "#about" },
+    { "label": "Skills", "href": "#skills" },
+    { "label": "Projects", "href": "#projects" },
+    { "label": "Achievements", "href": "#achievements" },
+    { "label": "Certifications", "href": "#certifications" },
+    { "label": "Contact", "href": "#contact" }
+  ],
+    "highlights": [
+        { "label": "Years shipping", "value": "6+" },
+        { "label": "Services owned", "value": "40+" },
+        { "label": "Engineers mentored", "value": "12" }
+    ],
+    "contact": {
+        "email": "maya.ortiz.dev@example.com",
+        "availability": "Open to select roles"
+    }
+}

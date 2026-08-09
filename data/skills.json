@@ -1,1 +1,86 @@
-[{"category":"Languages","items":[{"name":"Go","level":5},{"name":"TypeScript","level":4},{"name":"Python","level":4},{"name":"SQL","level":5}]},{"category":"Infrastructure","items":[{"name":"Kubernetes","level":4},{"name":"AWS","level":4},{"name":"Kafka","level":4},{"name":"Docker","level":5}]},{"category":"Data & Storage","items":[{"name":"PostgreSQL","level":5},{"name":"Redis","level":4},{"name":"DynamoDB","level":3},{"name":"Elasticsearch","level":3}]},{"category":"Practices","items":[{"name":"System design","level":5},{"name":"Observability","level":4},{"name":"API design","level":5},{"name":"Incident response","level":4}]}]
+[
+    {
+        "category": "Languages",
+        "items": [
+            {
+                "name": "Go",
+                "level": 5
+            },
+            {
+                "name": "TypeScript",
+                "level": 4
+            },
+            {
+                "name": "Python",
+                "level": 4
+            },
+            {
+                "name": "SQL",
+                "level": 5
+            }
+        ]
+    },
+    {
+        "category": "Infrastructure",
+        "items": [
+            {
+                "name": "Kubernetes",
+                "level": 4
+            },
+            {
+                "name": "AWS",
+                "level": 4
+            },
+            {
+                "name": "Kafka",
+                "level": 4
+            },
+            {
+                "name": "Docker",
+                "level": 5
+            }
+        ]
+    },
+    {
+        "category": "Data & Storage",
+        "items": [
+            {
+                "name": "PostgreSQL",
+                "level": 5
+            },
+            {
+                "name": "Redis",
+                "level": 4
+            },
+            {
+                "name": "DynamoDB",
+                "level": 3
+            },
+            {
+                "name": "Elasticsearch",
+                "level": 3
+            }
+        ]
+    },
+    {
+        "category": "Practices",
+        "items": [
+            {
+                "name": "System design",
+                "level": 5
+            },
+            {
+                "name": "Observability",
+                "level": 4
+            },
+            {
+                "name": "API design",
+                "level": 5
+            },
+            {
+                "name": "Incident response",
+                "level": 4
+            }
+        ]
+    }
+]

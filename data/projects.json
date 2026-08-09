@@ -1,1 +1,36 @@
-[{"id":"project-1","title":"Ledger","summary":"Real-time payments engine built for reliable settlement across distributed systems.","tags":["Go","Kafka","Postgres","gRPC"],"metric":"4M+ transactions/day"},{"id":"project-2","title":"Waypoint","summary":"Internal deployment platform that cut release time for engineering teams dramatically.","tags":["TypeScript","Kubernetes","Terraform"],"metric":"40min to 6min deploys"},{"id":"project-3","title":"Sift","summary":"Open-source CLI for spotting unusual patterns in structured logs without a heavy ML stack.","tags":["Rust","CLI","Open Source"],"metric":"1,800+ GitHub stars"}]
+[
+    {
+        "id": "project-1",
+        "title": "Ledger",
+        "summary": "Real-time payments engine built for reliable settlement across distributed systems.",
+        "tags": [
+            "Go",
+            "Kafka",
+            "Postgres",
+            "gRPC"
+        ],
+        "metric": "4M+ transactions/day"
+    },
+    {
+        "id": "project-2",
+        "title": "Waypoint",
+        "summary": "Internal deployment platform that cut release time for engineering teams dramatically.",
+        "tags": [
+            "TypeScript",
+            "Kubernetes",
+            "Terraform"
+        ],
+        "metric": "40min to 6min deploys"
+    },
+    {
+        "id": "project-3",
+        "title": "Sift",
+        "summary": "Open-source CLI for spotting unusual patterns in structured logs without a heavy ML stack.",
+        "tags": [
+            "Rust",
+            "CLI",
+            "Open Source"
+        ],
+        "metric": "1,800+ GitHub stars"
+    }
+]

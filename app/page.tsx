@@ -115,14 +115,14 @@ export default function Home() {
           <div className="section-wrapper">
             <SectionHeader eyebrow="About" title={aboutTitle} copy={aboutDescription} />
 
-            <div className="card-grid" style={{ marginTop: "1.5rem" }}>
+            {/* <div className="card-grid" style={{ marginTop: "1.5rem" }}>
               {highlights.map((item) => (
                 <div key={item.label} className="stat-card">
                   <strong>{item.value}</strong>
                   <span>{item.label}</span>
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
         </section>
 
