@@ -21,6 +21,9 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: `${portfolio.name} | ${portfolio.title}`,
   description: portfolio.tagline,
+  icons: {
+    icon: "/site.svg",
+  },
 };
 
 export default function RootLayout({

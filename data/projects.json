@@ -12,7 +12,7 @@
     ],
     "metric": "1st Place at SciFest 2025",
     "featured": true,
-    "repo": "YOUR_GITHUB_REPO_URL"
+    "repo": "https://www.linkedin.com/posts/maheeshapramuditha_machinelearning-embeddedsystems-esp32-ugcPost-7294610740248752129-0Zp9?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEu7faAB1rs-VDj-LxBpfZTc2eo_0baMp1Q"
   },
   {
     "id": "project-2",
@@ -27,7 +27,7 @@
     ],
     "metric": "Full-stack application",
     "featured": true,
-    "repo": "YOUR_GITHUB_REPO_URL",
+    "repo": "https://github.com/IT24103215/New_Kalyani_Frontend",
     "live": "YOUR_LIVE_URL"
   },
   {
@@ -43,7 +43,7 @@
     ],
     "metric": "Full-stack management system",
     "featured": true,
-    "repo": "YOUR_GITHUB_REPO_URL",
+    "repo": "https://www.linkedin.com/posts/luhansa-soori_excited-to-share-rmis-resource-management-activity-7475410146802790402-0_Zm?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEu7faAB1rs-VDj-LxBpfZTc2eo_0baMp1Q",
     "live": "YOUR_LIVE_URL"
   },
   {
@@ -59,7 +59,7 @@
     ],
     "metric": "1st Place at CryptX 2.0 Designathon",
     "featured": true,
-    "repo": "YOUR_GITHUB_REPO_URL",
+    "repo": "https://github.com/luhansa26/",
     "live": "YOUR_LIVE_URL"
   },
   {
@@ -75,7 +75,7 @@
     ],
     "metric": "Automated infrastructure and deployment pipeline",
     "featured": true,
-    "repo": "YOUR_GITHUB_REPO_URL"
+    "repo": "https://github.com/luhansa26"
   },
   {
     "id": "project-6",
@@ -89,7 +89,7 @@
     ],
     "metric": "Personal productivity platform",
     "featured": false,
-    "repo": "YOUR_GITHUB_REPO_URL",
+    "repo": "https://github.com/luhansa26",
     "live": "YOUR_LIVE_URL"
   }
 ]

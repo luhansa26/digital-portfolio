@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { achievements, certificates, portfolio, projects, skills, socials } from "../lib/content";
 
 type NavigationItem = { label: string; href: string };
@@ -52,10 +52,25 @@ export default function Home() {
   const [showAllProjects, setShowAllProjects] = useState(false);
   const [showAllAchievements, setShowAllAchievements] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [formValues, setFormValues] = useState({ name: "", email: "", message: "" });
   const achievementItems = achievements as AchievementItem[];
   const featuredAchievements = achievementItems.slice(0, 3);
   const otherAchievements = achievementItems.slice(3);
   const certificateItems = certificates as CertificateItem[];
+
+  const openContactModal = () => setModalOpen(true);
+  const closeContactModal = () => setModalOpen(false);
+  const handleFormChange = (field: keyof typeof formValues, value: string) => {
+    setFormValues((prev) => ({ ...prev, [field]: value }));
+  };
+  const handleFormSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const subject = encodeURIComponent("Portfolio inquiry from website");
+    const body = encodeURIComponent(`Name: ${formValues.name}\nEmail: ${formValues.email}\n\n${formValues.message}`);
+    window.location.href = `mailto:${contact.email}?subject=${subject}&body=${body}`;
+    setModalOpen(false);
+  };
 
   return (
     <main id="top" className="site-shell">
@@ -84,9 +99,9 @@ export default function Home() {
                 {item.label}
               </a>
             ))}
-            <a href="#contact" className="button button--secondary nav-cta" onClick={() => setNavOpen(false)}>
+            <button type="button" className="button button--primary" onClick={() => { openContactModal(); setNavOpen(false); }}>
               Get in touch
-            </a>
+            </button>
           </nav>
         </div>
       </header>
@@ -359,15 +374,44 @@ export default function Home() {
           <div className="section-wrapper contact-card">
             <SectionHeader eyebrow="Contact" title="Ready to build something dependable" copy="Let’s talk about product quality, platform stability, and thoughtful engineering execution." />
             <div className="hero-actions" style={{ marginTop: "1rem" }}>
-              <a href={`mailto:${contact.email}`} className="button button--primary">
-                Email {contact.email}
-              </a>
+              <button type="button" className="button button--primary" onClick={openContactModal}>
+                Get in touch
+              </button>
               <a href="#top" className="button button--secondary">
                 Back to top
               </a>
             </div>
           </div>
         </section>
+
+        {modalOpen ? (
+          <div className="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
+            <div className="modal-content">
+              <button type="button" className="modal-close" onClick={closeContactModal} aria-label="Close form">
+                ×
+              </button>
+              <h2 id="contact-modal-title">Send a message</h2>
+              <form onSubmit={handleFormSubmit} className="contact-form">
+                <label>
+                  Name
+                  <input type="text" value={formValues.name} onChange={(event) => handleFormChange("name", event.target.value)} required />
+                </label>
+                <label>
+                  Email
+                  <input type="email" value={formValues.email} onChange={(event) => handleFormChange("email", event.target.value)} required />
+                </label>
+                <label>
+                  Message
+                  <textarea value={formValues.message} onChange={(event) => handleFormChange("message", event.target.value)} rows={5} required />
+                </label>
+                <div className="contact-form-actions">
+                  <button type="submit" className="button button--primary">Send email</button>
+                  <button type="button" className="button button--secondary" onClick={closeContactModal}>Cancel</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        ) : null}
       </div>
 
       <footer className="site-footer">
@@ -377,7 +421,6 @@ export default function Home() {
               <span className="site-brand__dot" aria-hidden="true" />
               <span>{portfolio.name}</span>
             </a>
-            <p className="section-copy footer-copy">{tagline}</p>
           </div>
 
           <div className="footer-col">
@@ -411,10 +454,7 @@ export default function Home() {
                 <a href={`mailto:${contact.email}`}>Email</a>
               </li>
               <li>
-                <a href="#contact">Get in touch</a>
-              </li>
-              <li>
-                <a href="#contact">Download résumé</a>
+                <button type="button" className="footer-link-button" onClick={openContactModal}>Get in touch</button>
               </li>
             </ul>
           </div>
